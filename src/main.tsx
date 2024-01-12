@@ -7,7 +7,7 @@ import { Routes } from './Routes'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter basename='/'>
+    <BrowserRouter>
       <Routes />
     </BrowserRouter>
   </React.StrictMode>,

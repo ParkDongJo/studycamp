@@ -1,13 +1,14 @@
 // Imports
+import { test, expect } from 'vitest'
 import { render, screen, fireEvent } from "@testing-library/react";
 
 // To Test
-import App from "../App";
+import Home from "@/pages/Home";
 
 // Tests
 test("Renders main page correctly", async () => {
   // Setup
-  render(<App />);
+  render(<Home />);
   const buttonCount = await screen.findByRole("button");
   const codeCount = await screen.queryByText(/The count is now:/);
 

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -21,7 +22,11 @@
     "noFallthroughCasesInSwitch": true,
 
     /*  ES6 모듈 사양을 준수 */
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    "paths": {
+      "@/*": ["./src/*"]
+    },
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
