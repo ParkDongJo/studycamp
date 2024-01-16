@@ -1,7 +1,8 @@
 import { Leader, Member } from '@/models/user';
 
-export interface Study {
+export interface Post {
   id: number;
+  grade: number;
   name: string;
   type: 'project' | 'study';
   numOfMembers: number;

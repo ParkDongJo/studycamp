@@ -7,6 +7,7 @@ export default function PageLayout() {
     <div
       style={{
         ...container,
+        background: colors.background,
       }}
     >
       <ErrorBoundary>
