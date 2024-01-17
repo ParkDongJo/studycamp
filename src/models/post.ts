@@ -2,7 +2,7 @@ import { Leader, Member } from '@/models/user';
 
 export interface Post {
   id: number;
-  grade: number;
+  grade: 'free' | 'gold';
   name: string;
   type: 'project' | 'study';
   numOfMembers: number;
