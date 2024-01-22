@@ -6,14 +6,15 @@ import useFetchPosts from '@/hooks/useFetchPosts';
 function Home() {
   const { data: posts, isLoading } = useFetchPosts();
 
-  console.log('test', posts, isLoading);
+  console.log(posts);
 
   return (
     <>
+      <div>{posts && posts[0].id}</div>
       <Banner />
       <Post.List>
-        <Post.Card title="포스팅 검증" />
-        <Post.Card title="포스팅 무료" />
+        {/* <Post.Card title="포스팅 검증" /> */}
+        {/* <Post.Card title="포스팅 무료" /> */}
       </Post.List>
     </>
   );

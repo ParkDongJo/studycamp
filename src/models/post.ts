@@ -5,7 +5,9 @@ export interface Post {
   grade: 'free' | 'gold';
   name: string;
   type: 'project' | 'study';
-  numOfMembers: number;
+  recruitsCount: number;
+  membersCount: number;
+  viewsCount: number;
   channel: 'online' | 'offline';
   connect: 'slack' | 'kakao' | 'discord' | 'etc';
   field: 'frontend' | 'backend' | 'android' | 'ios' | 'design' | 'etc';
@@ -16,6 +18,7 @@ export interface Post {
   description: string;
   isPublic: boolean;
   isDeleted: boolean;
+  daedlineDate: Date;
   startDate: Date;
   createdAt: Date;
   updatedAt: Date;
