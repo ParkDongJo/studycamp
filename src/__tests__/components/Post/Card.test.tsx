@@ -5,11 +5,6 @@ import { render, fireEvent } from '@testing-library/react';
 // To Test
 import Card, { Props } from '@/components/Post/Card';
 
-vi.mock('@/components/common/Icon', () => {
-  const MockedIcon = ({ icon }: { icon: string }) => <div>{icon}</div>;
-  return MockedIcon;
-});
-
 // Tests
 describe('Card', () => {
   test('Renders main page correctly', async () => {
@@ -18,10 +13,9 @@ describe('Card', () => {
       type: 'study',
       channel: 'online',
       title: 'Test title',
-      recuitsCount: 1,
-      likeCount: 1,
-      viewCount: 1,
-      fields: [],
+      candidatesCount: 1,
+      viewsCount: 1,
+      techTags: [],
       deadlineDate: new Date('2021-01-01'),
       user: {
         name: 'Test name',
@@ -33,6 +27,7 @@ describe('Card', () => {
     expect(comp.getByText('online')).not.toBeNull();
     expect(comp.getByText('Test title')).not.toBeNull();
     expect(comp.getByText('마감일 : 2021.01.01')).not.toBeNull();
+    expect(comp.getByAltText('vite')).not.toBeNull();
   });
 
   function renderCard(props: Props) {

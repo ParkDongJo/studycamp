@@ -1,14 +1,14 @@
 interface User {
   id: number;
   name: string;
+  profileImage: string;
   nickname: string;
   email: string;
   role: 'leader' | 'member';
   studiesAsMember: string[];
 }
 
-export interface Manager extends User {
-}
+export interface Manager extends User {}
 
 export interface Leader extends User {
   careers: string[];
@@ -17,5 +17,4 @@ export interface Leader extends User {
   annual: number;
 }
 
-export interface Member extends User {
-}
+export interface Member extends User {}

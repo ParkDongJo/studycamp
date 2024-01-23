@@ -10,10 +10,10 @@ interface Props {
   size?: number;
 }
 export default function Icon({ icon, color, size }: Props) {
-  const SVGIcon = Icons[icon];
+  const svgIcon = Icons[icon];
   return (
     <div className="text-3xl font-bold underline">
-      <SVGIcon />
+      <img src={svgIcon} className="logo" alt={icon} />
     </div>
   );
 }

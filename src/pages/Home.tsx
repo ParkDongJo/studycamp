@@ -1,21 +1,37 @@
 import './App.css';
 import Banner from '@/components/Banner';
 import * as Post from '@/components/Post';
+import { Post as PostType } from '@/models/post';
 import { useFetchPosts } from '@/hooks/useFetchPosts';
 
 function Home() {
-  const result = useFetchPosts();
+  const { data: posts, isLoading } = useFetchPosts();
 
-  console.log(result.test);
+  const getCard = (post: PostType) => {
+    return {
+      type: post.type,
+      channel: post.channel,
+      title: post.title,
+      candidatesCount: post.candidates.length,
+      viewsCount: post.views,
+      techTags: post.techTags,
+      deadlineDate: post.deadlineDate,
+      user: {
+        name: post.leader.name,
+        profileImage: post.leader.profileImage,
+      },
+    } as Post.CardProps;
+  };
 
   return (
     <>
-      <div>{result.data && result.data[0].id}</div>
       <Banner />
-      <Post.List>
-        {/* <Post.Card title="포스팅 검증" /> */}
-        {/* <Post.Card title="포스팅 무료" /> */}
-      </Post.List>
+      {posts && posts[0] && (
+        <Post.List>
+          <Post.Card {...getCard(posts[0])} />
+          {/* <Post.Card title="포스팅 무료" /> */}
+        </Post.List>
+      )}
     </>
   );
 }

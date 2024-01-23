@@ -24,7 +24,7 @@ describe('Home', () => {
     renderWithRouter('/home');
 
     await waitFor(async () => {
-      expect(screen.queryByText(/34/)).not.toBeNull();
+      expect(screen.queryByText(posts[0].title)).not.toBeNull();
     });
   });
 
