@@ -1,16 +1,16 @@
 import './App.css';
 import Banner from '@/components/Banner';
 import * as Post from '@/components/Post';
-import useFetchPosts from '@/hooks/useFetchPosts';
+import { useFetchPosts } from '@/hooks/useFetchPosts';
 
 function Home() {
-  const { data: posts, isLoading } = useFetchPosts();
+  const result = useFetchPosts();
 
-  console.log(posts);
+  console.log(result.test);
 
   return (
     <>
-      <div>{posts && posts[0].id}</div>
+      <div>{result.data && result.data[0].id}</div>
       <Banner />
       <Post.List>
         {/* <Post.Card title="포스팅 검증" /> */}

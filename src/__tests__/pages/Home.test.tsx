@@ -1,23 +1,31 @@
 // Imports
-import { test, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { vi, test, expect, Mock } from 'vitest';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 // To Test
 import Home from '@/pages/Home';
+import { useFetchPosts } from '@/hooks/useFetchPosts';
 import posts from '@root/dummy_data.json';
+
+vi.mock('@/hooks/useFetchPosts', () => {
+  return {
+    useFetchPosts: vi.fn(),
+  };
+});
 
 // Tests
 describe('Home', () => {
   test('Renders main page correctly', async () => {
     // Setup
+    (useFetchPosts as Mock<any, any>).mockReturnValue({ data: posts, isLoading: false });
+
     renderWithRouter('/home');
 
-    const codeCount = await screen.queryByText(/34/);
-
-    // 일단!!! 리액트 쿼리는 사용하지 말자!
-    console.log(codeCount);
-    expect(codeCount).not.toBe(null);
+    await waitFor(async () => {
+      expect(screen.queryByText(/34/)).not.toBeNull();
+    });
   });
 
   test('광고들 렌더링', () => {});
@@ -29,10 +37,13 @@ describe('Home', () => {
   test('필터링 값에 따른 포스팅 렌더링', async () => {});
 
   function renderWithRouter(route: string) {
+    const queryClient = new QueryClient();
     return render(
-      <MemoryRouter initialEntries={[route]}>
-        <Home />
-      </MemoryRouter>
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter initialEntries={[route]}>
+          <Home />
+        </MemoryRouter>
+      </QueryClientProvider>
     );
   }
 });

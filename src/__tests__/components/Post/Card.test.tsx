@@ -1,11 +1,11 @@
 // Imports
-import { test, expect } from 'vitest';
+import { test, expect, vi } from 'vitest';
 import { render, fireEvent } from '@testing-library/react';
 
 // To Test
 import Card, { Props } from '@/components/Post/Card';
 
-jest.mock('@/components/common/Icon', () => {
+vi.mock('@/components/common/Icon', () => {
   const MockedIcon = ({ icon }: { icon: string }) => <div>{icon}</div>;
   return MockedIcon;
 });
