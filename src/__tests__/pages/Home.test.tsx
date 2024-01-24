@@ -7,7 +7,7 @@ import { MemoryRouter } from 'react-router-dom';
 // To Test
 import Home from '@/pages/Home';
 import { useFetchPosts } from '@/hooks/useFetchPosts';
-import posts from '@root/dummy_data.json';
+import posts from '@/dummy_data.json';
 
 vi.mock('@/hooks/useFetchPosts', () => {
   return {

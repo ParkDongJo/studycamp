@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Post } from '@/models/post';
-import posts from '@root/dummy_data.json';
+import posts from '@/dummy_data.json';
 
 const middleware = (datas: { [key: string]: any }[]) => {
   return datas.map(

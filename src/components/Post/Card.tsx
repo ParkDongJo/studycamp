@@ -17,7 +17,7 @@ export interface Props {
 export default function Card(props: Props) {
   const { type, channel, title, candidatesCount, viewsCount, techTags, deadlineDate, user } = props;
   return (
-    <div>
+    <div className="flex ml-0 font-mono bg-yellow-100">
       <div>{type}</div>
       <div>{channel}</div>
       <div>{title}</div>
