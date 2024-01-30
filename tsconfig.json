@@ -24,6 +24,9 @@
     /*  ES6 모듈 사양을 준수 */
     "esModuleInterop": true,
 
+    /* dom Test을 위한 설정 */
+    "types": ["@testing-library/jest-dom"],
+
     "paths": {
       "@root/*": ["./*"],
       "@/*": ["./src/*"]
