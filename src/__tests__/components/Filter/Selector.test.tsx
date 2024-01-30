@@ -29,13 +29,22 @@ describe('Selector', () => {
     const comp = renderSelector({
       placeholder: 'test',
       options: ['project', 'study'],
-      onChange: mockOnChange,
+      onChange: (selected: string) => {
+        console.log('wowowowowo');
+        mockOnChange(selected);
+      },
     });
 
     await userEvent.click(comp.getByRole('combobox'));
 
-    await waitFor(() => {
+    await waitFor(async () => {
       expect(comp.getByText('project')).toBeInTheDocument();
+    });
+
+    await userEvent.click(comp.getByRole('option', { name: 'study' }));
+
+    await waitFor(async () => {
+      expect(comp.getByText('study')).toBeInTheDocument();
     });
   });
 

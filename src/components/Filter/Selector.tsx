@@ -10,6 +10,7 @@ export default function Selector(props: Props) {
   const { placeholder, options, onChange } = props;
 
   const handleChange = (event: FormEvent) => {
+    console.log('hello');
     const { value } = event.target as HTMLInputElement;
     onChange(value);
   };
