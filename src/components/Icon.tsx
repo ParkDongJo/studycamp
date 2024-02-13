@@ -11,9 +11,5 @@ interface Props {
 }
 export default function Icon({ icon, color, size }: Props) {
   const svgIcon = Icons[icon];
-  return (
-    <div className="text-3xl font-bold underline">
-      <img src={svgIcon} className="logo" alt={icon} />
-    </div>
-  );
+  return <img src={svgIcon} alt={icon} className="w-[16px] h-[16px]" />;
 }
