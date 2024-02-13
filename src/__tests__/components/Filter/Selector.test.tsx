@@ -35,7 +35,9 @@ describe('Selector', () => {
       },
     });
 
-    await userEvent.click(comp.getByRole('combobox'));
+    const comboboxEl = comp.getByRole('combobox');
+
+    await userEvent.click(comboboxEl);
 
     await waitFor(async () => {
       expect(comp.getByText('project')).toBeInTheDocument();
@@ -44,7 +46,7 @@ describe('Selector', () => {
     await userEvent.click(comp.getByRole('option', { name: 'study' }));
 
     await waitFor(async () => {
-      expect(comp.getByText('study')).toBeInTheDocument();
+      expect(comboboxEl).toHaveTextContent('study');
     });
   });
 
