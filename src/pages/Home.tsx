@@ -1,6 +1,7 @@
 import './App.css';
 import Banner from '@/components/Banner';
 import * as Post from '@/components/Post';
+// import * as Card from '@root/src/components/Post/Card';
 import * as Filter from '@/components/Filter';
 import { Post as PostType } from '@/models/post';
 import { useFetchPosts } from '@/hooks/useFetchPosts';
@@ -27,13 +28,13 @@ function Home() {
   return (
     <>
       <Banner />
+      <Filter.Selector placeholder="유형" options={['project', 'study']} onChange={() => {}} />
       {posts && posts[0] && (
         <Post.List>
           <Post.Card {...getCard(posts[0])} />
           {/* <Post.Card title="포스팅 무료" /> */}
         </Post.List>
       )}
-      <Filter.Selector placeholder="유형" options={['project', 'study']} onChange={() => {}} />
     </>
   );
 }

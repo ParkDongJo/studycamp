@@ -11,6 +11,7 @@ export interface Post {
   techTags: string[];
   leader: Leader;
   views: number;
+  recruits: number;
   candidates: Member[];
   members: Member[];
   description: string;
